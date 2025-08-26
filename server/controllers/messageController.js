@@ -3,8 +3,8 @@
 import axios from "axios";
 import Chat from "../models/Chat.js";
 import User from "../models/User.js";
-import imagekit from "../configs/imagekit.js";
 import openai from "../configs/openai.js";
+import imageKit from "../configs/imagekit.js";
 
 
 export const textMessageController = async (req, res) => {
@@ -82,7 +82,7 @@ export const imageMessageController = async(req,res)=>{
         const base64Image = `data:image/png;base64,${Buffer.from(aiImageResponse.data,"binary").toString('base64')}`;
         
         // upload to imagekit media library
-        const uploadResponse = await imagekit.upload({
+        const uploadResponse = await imageKit.upload({
             file:base64Image,
             fileName:`${Date.now()}.png`,
             folder:"gpt"
